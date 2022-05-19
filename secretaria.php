@@ -1,3 +1,6 @@
+<?php 
+include "./funcionConectar.php";
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -106,19 +109,23 @@
 		<div id="fh5co-work">
 			<h2>Ver tus Calificaciones:</h2>
 			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-				<label for="nombre">Nombre del Alumno</label>
-				<input type="text" name="nombre" id="nombre" value="Rafael Romera Navarro" require><br>
-				<label for="curso">Curso</label>
-				<input type="number" name="curso" id="curso" value="1" require> <label for="curso"> º ESO</label><br>
+				<label for="dni">DNI del Alumno</label>
+				<input type="text" name="dni" id="dni" value="00000001A" require><br>
 				<input type="submit" value="Ver Notas">
 			</form>
 			<?php 
-				if (isset($_POST['nombre']) && isset($_POST['curso'])){
+				if (isset($_POST['dni'])){
 					echo "<hr>";
+					$dni = $_POST['nombre'];
+					$conexion = conectar('izv','root','test');
+					$IdAlumno = $conexion->query("select DNI_Alumno from alumnos where DNI_Alumno = $dni")->fetch(PDO::FETCH_BOTH)[0];
 					echo "<p>Notas de ".$_POST['nombre'].", Curso ".$_POST['curso']."º ESO</p>";
 					echo "<table border='1'>";
-					echo "<tr><td>hola</td></tr>";
+					echo "<tr><td>$idAlumno</td></tr>";
 					echo "</table>";
+				} else {
+					echo "<hr>";
+					echo "Error no has introducido el DNI";
 				}
 			?>
 		</div>
