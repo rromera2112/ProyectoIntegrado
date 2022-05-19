@@ -36,7 +36,7 @@ insert into alumnos (DNI_Alumno, nombre, apellidos, fecha_nacimiento) values
     ('00000002A','Alexis','González Romero','1992-09-1'),
     ('00000003A','Victor Manuel','González Padial','2001-06-06'),
     ('00000004A','Jose Luis','Exposito Lopera','2001-04-19'),
-    ('00000005A','Daniel','Haro Álvarez','2001-11-2001');
+    ('00000005A','Daniel','Haro Álvarez','2001-11-21');
 
 insert into profesores (DNI_Profesor, nombre, apellidos, direccion,telefono) values
     ('00000006A','Jaime','Fernández Ortega','Calle Sevilla Nº 05, Granada, España','1960-09-12'),
