@@ -9,7 +9,7 @@ create table alumnos (
 );
 create table profesores (
     DNI_Profesor char(9) not null,
-    nombre vachar(30),
+    nombre varchar(30),
     apellidos varchar(50),
     direccion varchar(50),
     telefono char(9),
