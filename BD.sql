@@ -39,11 +39,11 @@ insert into alumnos (DNI_Alumno, nombre, apellidos, fecha_nacimiento) values
     ('00000005A','Daniel','Haro Álvarez','2001-11-21');
 
 insert into profesores (DNI_Profesor, nombre, apellidos, direccion,telefono) values
-    ('00000006A','Jaime','Fernández Ortega','Calle Sevilla Nº 05, Granada, España','1960-09-12'),
-    ('00000007A','Aurora','Pleguezuelos Sierra','Calle Buenos Aires Nº 29, Granada, España','1978-08-05'),
-    ('00000008A','Eduardo','García Robles','Calle las Flores Nº 06, Granada, España','1968-06-14'),
-    ('00000009A','Pedro','Fernández Bosh','Calle Tejeiro Nº 08, Granada, España','1985-11-07'),
-    ('00000010A','María Lourdes','García Gualda','Calle Tibonidas Nº19, Granada, España','1971-07-11');
+    ('00000006A','Jaime','Fernández Ortega','Calle Sevilla Nº 05, Granada, España','123456789'),
+    ('00000007A','Aurora','Pleguezuelos Sierra','Calle Buenos Aires Nº 29, Granada, España','123456788'),
+    ('00000008A','Eduardo','García Robles','Calle las Flores Nº 06, Granada, España','123456787'),
+    ('00000009A','Pedro','Fernández Bosh','Calle Tejeiro Nº 08, Granada, España','123456786'),
+    ('00000010A','María Lourdes','García Gualda','Calle Tibonidas Nº19, Granada, España','123456785');
 
 insert into asignaturas(DNI_Profesor,nombre) values
     ('00000010A','Matemáticas 1ºESO'),
