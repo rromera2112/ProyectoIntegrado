@@ -121,9 +121,16 @@ include "./funcionConectar.php";
 					$alumno = $conexion->query("select DNI_Alumno, nombre, apellidos from alumnos where DNI_Alumno = '$dni'")->fetch(PDO::FETCH_BOTH);
 					$dni = $alumno['DNI_Alumno'];
 					$nombre = $alumno['nombre'] . ' ' . $alumno['apellidos'];
+					$notas = $conexion->query("select IdAsignatura, nota from cursos where DNI_Alumno = '$dni'");
 					echo "<p>Notas de $nombre</p>";
 					echo "<table border='1'>";
-					echo "<tr><td>$dni</td></tr>";
+					echo "<tr>";
+					while ($asignatura = $notas->fetch(PDO::FETCH_BOTH)){
+						$idAsignatura = $asignatura['IdAsignatura'];
+						$asignatura = $conexion->query("select nombre from asignaturas where IdAsignatura = '$idAsignatura'")->fetch(PDO::FETCH_BOTH)[0];
+						echo "<th>$asignatura</th>";
+					}
+					echo "</tr>";
 					echo "</table>";
 				} else {
 					echo "<hr>";
