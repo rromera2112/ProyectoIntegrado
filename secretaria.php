@@ -119,17 +119,21 @@ include "./funcionConectar.php";
 					$dni = $_POST['dni'];
 					$conexion = conectar('zv','usuario','usuario');
 					$alumno = $conexion->query("select DNI_Alumno, nombre, apellidos from alumnos where DNI_Alumno = '$dni'")->fetch(PDO::FETCH_BOTH);
-					$dni = $alumno['DNI_Alumno'];
+					$dniAlumno = $alumno['DNI_Alumno'];
 					$nombre = $alumno['nombre'] . ' ' . $alumno['apellidos'];
-					$notas = $conexion->query("select IdAsignatura, nota from cursos where DNI_Alumno = '$dni'");
-					echo "<p>Notas de $nombre</p>";
-					echo "<table border='1'>";
-					while ($asignatura = $notas->fetch(PDO::FETCH_BOTH)){
-						$idAsignatura = $asignatura['IdAsignatura'];
-						$nombreAsignatura = $conexion->query("select nombre from asignaturas where IdAsignatura = '$idAsignatura'")->fetch(PDO::FETCH_BOTH)[0];
-						echo "<tr><th>$nombreAsignatura</th><td>". $asignatura['nota'] ."</td></tr>";
+					$notas = $conexion->query("select IdAsignatura, nota from cursos where DNI_Alumno = '$dniAlumno'");
+					if ($dniAlumno != ''){
+						echo "<p>Notas de $nombre</p>";
+						echo "<table border='1'>";
+						while ($asignatura = $notas->fetch(PDO::FETCH_BOTH)){
+							$idAsignatura = $asignatura['IdAsignatura'];
+							$nombreAsignatura = $conexion->query("select nombre from asignaturas where IdAsignatura = '$idAsignatura'")->fetch(PDO::FETCH_BOTH)[0];
+							echo "<tr><th>$nombreAsignatura</th><td>". $asignatura['nota'] ."</td></tr>";
+						}
+						echo "</table>";
+					}else {
+						echo "No se encuentra a ningun alumno con el DNI: $dni";
 					}
-					echo "</table>";
 				} else {
 					echo "<hr>";
 					echo "Error no has introducido el DNI";
