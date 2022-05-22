@@ -118,10 +118,12 @@ include "./funcionConectar.php";
 					echo "<hr>";
 					$dni = $_POST['dni'];
 					$conexion = conectar('zv','usuario','usuario');
-					$IdAlumno = $conexion->query("select DNI_Alumno from alumnos where DNI_Alumno = '$dni'")->fetch(PDO::FETCH_BOTH)[0];
-					echo "<p>Notas de ".$_POST['nombre'].", Curso ".$_POST['curso']."º ESO</p>";
+					$alumno = $conexion->query("select DNI_Alumno, nombre, apellidos from alumnos where DNI_Alumno = '$dni'")->fetch(PDO::FETCH_BOTH);
+					$dni = $alumno['DNI_Alumno'];
+					$nombre = $alumno['nombre'] . ' ' . $alumno['apellidos'];
+					echo "<p>Notas de $nombre</p>";
 					echo "<table border='1'>";
-					echo "<tr><td>$idAlumno</td></tr>";
+					echo "<tr><td>$dni</td></tr>";
 					echo "</table>";
 				} else {
 					echo "<hr>";
