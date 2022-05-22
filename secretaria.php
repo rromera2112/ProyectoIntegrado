@@ -124,13 +124,11 @@ include "./funcionConectar.php";
 					$notas = $conexion->query("select IdAsignatura, nota from cursos where DNI_Alumno = '$dni'");
 					echo "<p>Notas de $nombre</p>";
 					echo "<table border='1'>";
-					echo "<tr>";
 					while ($asignatura = $notas->fetch(PDO::FETCH_BOTH)){
 						$idAsignatura = $asignatura['IdAsignatura'];
-						$asignatura = $conexion->query("select nombre from asignaturas where IdAsignatura = '$idAsignatura'")->fetch(PDO::FETCH_BOTH)[0];
-						echo "<th>$asignatura</th>";
+						$nombreAsignatura = $conexion->query("select nombre from asignaturas where IdAsignatura = '$idAsignatura'")->fetch(PDO::FETCH_BOTH)[0];
+						echo "<tr><th>$nombreAsignatura</th><td>". $asignatura['nota'] ."</td></tr>";
 					}
-					echo "</tr>";
 					echo "</table>";
 				} else {
 					echo "<hr>";
