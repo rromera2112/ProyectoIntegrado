@@ -2,7 +2,7 @@
 
 function conectar($baseDeDatos,$usuario,$contraseña) {
     try {
-        $dsn = "mysql:host=db;dbname=".$baseDeDatos.";"; //;charset=utf8
+        $dsn = "mysql:host=mysql;dbname=".$baseDeDatos.";"; //;charset=utf8
         $conexion = new PDO($dsn, $usuario, $contraseña);
     } catch (PDOException $e) {
         //mostramos el mensaje de error

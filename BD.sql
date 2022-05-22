@@ -1,5 +1,4 @@
-Create Database izv;
-use izv;
+use zv;
 create table alumnos (
     DNI_Alumno char(9) not null,
     nombre varchar(30),

@@ -117,7 +117,7 @@ include "./funcionConectar.php";
 				if (isset($_POST['dni'])){
 					echo "<hr>";
 					$dni = $_POST['nombre'];
-					$conexion = conectar('izv','root','test');
+					$conexion = conectar('zv','usuario','usuario');
 					$IdAlumno = $conexion->query("select DNI_Alumno from alumnos where DNI_Alumno = $dni")->fetch(PDO::FETCH_BOTH)[0];
 					echo "<p>Notas de ".$_POST['nombre'].", Curso ".$_POST['curso']."º ESO</p>";
 					echo "<table border='1'>";
