@@ -81,7 +81,7 @@ include "./funcionConectar.php";
 								<li><a href="index.html">Inicio</a></li>
 								<li class="active"><a href="secretaria.php">Secretaría</a></li>
 								<li><a href="noticias.html">Noticias</a></li>
-								<li><a href="http://moodle.zadinvergeles.local/">Moodle</a></li>
+								<li><a href="http://moodle.zaidinvergeles.local/">Moodle</a></li>
 								<li><a href="contacta.html">Contacta</a></li>
 							</ul>
 						</div>
