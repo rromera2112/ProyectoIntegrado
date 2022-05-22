@@ -1,5 +1,5 @@
 <?php
-$to = "info@zaidinvergeles.local";
+$to = "rromera2112@ieszaidinvergeles.local";
 $nombre = $_POST['nombre'];
 $correo = $_POST['correo'];
 $subject = "Pregunta de $nombre, correo: $correo";
