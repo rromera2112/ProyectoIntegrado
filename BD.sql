@@ -1,4 +1,6 @@
+/*Usamos la base de datos ZV**/
 use zv;
+/*Creamos las tablas*/
 create table alumnos (
     DNI_Alumno char(9) not null,
     nombre varchar(30),
@@ -29,7 +31,7 @@ create table cursos (
     foreign key (IdAsignatura) references asignaturas(IdAsignatura),
     foreign key (DNI_Alumno) references alumnos(DNI_Alumno)
 );
-
+/*Le insertamos los datos*/
 insert into alumnos (DNI_Alumno, nombre, apellidos, fecha_nacimiento) values 
     ('00000001A','Rafael','Romera Navarro','200-12-21'),
     ('00000002A','Alexis','González Romero','1992-09-1'),

@@ -114,29 +114,44 @@ include "./funcionConectar.php";
 				<input type="submit" value="Ver Notas">
 			</form>
 			<?php 
+			#Preguntamos si se ha mandado por el formulario el DNI
 				if (isset($_POST['dni'])){
+					#Si se ha enviado hacemos lo siguente
 					echo "<hr>";
 					$dni = $_POST['dni'];
+					#Nos conectamos a la base de datos que hemos creado
 					$conexion = conectar('zv','usuario','usuario');
-					$alumno = $conexion->query("select DNI_Alumno, nombre, apellidos from alumnos where DNI_Alumno = '$dni'")->fetch(PDO::FETCH_BOTH);
+					#Hacemos una consulta a la base de datos para sacar el DNI y nombre del alumno
+					$alumno = $conexion->query("select DNI_Alumno, nombre, apellidos from alumnos ".
+					"where DNI_Alumno = '$dni'")->fetch(PDO::FETCH_BOTH);
+					#Guardamos los datos en variables
 					$dniAlumno = $alumno['DNI_Alumno'];
 					$nombre = $alumno['nombre'] . ' ' . $alumno['apellidos'];
-					$notas = $conexion->query("select IdAsignatura, nota from cursos where DNI_Alumno = '$dniAlumno'");
+					#Buscamos las notas del alumno
+					$notas = $conexion->query("select IdAsignatura, nota from cursos ".
+					"where DNI_Alumno = '$dniAlumno'");
+					#Preguntamos si el DNI del alumno existe en la base de datos
 					if ($dniAlumno != ''){
+						#Si existe crerá una tabla con las notas
 						echo "<p>Notas de $nombre</p>";
 						echo "<table border='1'>";
+						#Por cada nota vamos a sacar su asignatura 
+						#y la mostraremos en una fila de la tabla
 						while ($asignatura = $notas->fetch(PDO::FETCH_BOTH)){
 							$idAsignatura = $asignatura['IdAsignatura'];
-							$nombreAsignatura = $conexion->query("select nombre from asignaturas where IdAsignatura = '$idAsignatura'")->fetch(PDO::FETCH_BOTH)[0];
+							$nombreAsignatura = $conexion->query("select nombre from asignaturas ".
+							"where IdAsignatura = '$idAsignatura'")->fetch(PDO::FETCH_BOTH)[0];
 							echo "<tr><th>$nombreAsignatura</th><td>". $asignatura['nota'] ."</td></tr>";
 						}
 						echo "</table>";
 					}else {
+						#Si no encuentra el DNI en la base de datos sale el siguiente mensaje
 						echo "No se encuentra a ningun alumno con el DNI: $dni";
 					}
 				} else {
+					#Si no se ha mandado ningun DNI sale el siguiente mensaje
 					echo "<hr>";
-					echo "Error no has introducido el DNI";
+					echo "Introduce el DNI para ver tus notas";
 				}
 			?>
 		</div>
